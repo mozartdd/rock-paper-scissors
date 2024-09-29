@@ -2,7 +2,7 @@ let humanScore = 0;
 let computerScore = 0;
 const choice = ["rock", "paper", "scissors"];
 
-//Function that gets random value from array "choice";
+//Function that gets random value from array "choice" and returns it to "computerChoice" var;
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * choice.length);
     console.log(`Computer have chosen: ${computerChoice, choice[computerChoice]}`);
@@ -10,7 +10,7 @@ function getComputerChoice() {
 }
 function getHumanChoice() {
     let humanChoice = prompt("Choose between rock, paper and scissors!");
-    return humanChoice; 
+    return humanChoice.toLowerCase(); 
 }
 function playRound (humanChoice, computerChoice) {
     if (humanChoice === "paper" && computerChoice === "rock" ||
