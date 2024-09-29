@@ -2,6 +2,7 @@ let humanScore = 0;
 let computerScore = 0;
 const choice = ["rock", "paper", "scissors"];
 
+//Function that gets random value from array "choice";
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * choice.length);
     console.log(`Computer have chosen: ${computerChoice, choice[computerChoice]}`);
@@ -12,10 +13,6 @@ function getHumanChoice() {
     return humanChoice; 
 }
 function playRound (humanChoice, computerChoice) {
-    // if (humanChoice !== "rock" || humanChoice !== "paper" || humanChoice !== "scissors") {
-    //     alert("wrong input");
-    // } else if (humanChoice === "" || humanChoice === null) {
-    //     alert("Canceled");}
     if (humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper" ||
         humanChoice === "rock" && computerChoice === "scissors") {
@@ -27,7 +24,7 @@ function playRound (humanChoice, computerChoice) {
             }
 }
 
-
+//loop that repeats "playRound" function 5 times;
 function playGame() {
     for (let round = 0; round < 5; round++){
         const humanChoice = getHumanChoice();
@@ -35,11 +32,11 @@ function playGame() {
         playRound(humanChoice, computerChoice);
     }
     if (humanScore > computerScore) {
-        alert(`Human have won computer :( 
+        alert(`Congratulations! Human have won :( 
         Human score: ${humanScore} 
         Computer score: ${computerScore}`);
     } else if (humanScore < computerScore) {
-        alert(`Human have lost to computer :)
+        alert(`Good luck next time! Human have lost :)
         Computer score: ${computerScore} 
         Human score: ${humanScore}`);
     } else alert(`Draw :| 
