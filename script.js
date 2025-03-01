@@ -1,6 +1,4 @@
 const choice = ['rock', 'paper', 'scissors'];
-let humanScore = 0;
-let computerScore = 0;
 
 // Function that randomly returns one element from choice array.
 const getComputerChoice = () => {
@@ -12,33 +10,45 @@ const getComputerChoice = () => {
 const getHumanChoice = userChoice => {
     userChoice = prompt('Make your choice between rock, paper and scissors').toLowerCase().trim();
     if(!(userChoice === 'rock' || userChoice === 'scissors' || userChoice === 'paper')) {
+        alert('Enter a valid choice');
         return getHumanChoice()
     } else {
         return userChoice.toLowerCase()
     };
 };
 
-// Function that play single round of rock, paper and scissors game and declares a winner of the round.
-const playRound = (humanChoice, computerChoice) => {
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
+const playGame = () => {
+    let roundCount = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
-    if(
-        humanChoice === 'rock' && computerChoice === 'scissors' ||
-        humanChoice === 'paper' && computerChoice === 'rock' ||
-        humanChoice === 'scissors' && computerChoice === 'paper'
-    ) {
-        humanScore++;
-        console.log(`Human has won the round, your choice was ${humanChoice} and machine's choice was ${computerChoice}.
-        Human score: ${humanScore}
-        Computer score: ${computerScore}`);
+    const playRound = (humanChoice, computerChoice) => {
+        humanChoice = getHumanChoice();
+        computerChoice = getComputerChoice();
+    
+        if(
+            humanChoice === 'rock' && computerChoice === 'scissors' ||
+            humanChoice === 'paper' && computerChoice === 'rock' ||
+            humanChoice === 'scissors' && computerChoice === 'paper'
+        ) {
+            humanScore++;
+            console.log(`Human has won the round, your choice was ${humanChoice} and machine's choice was ${computerChoice}.
+            Human score: ${humanScore}
+            Computer score: ${computerScore}`);
+        } else {
+            computerScore++;
+            console.log(`Computer has won the round, machine's choice was ${computerChoice} and your's choice was ${humanChoice}.
+            Human score: ${humanScore}
+            Computer score: ${computerScore}`);
+        }
+    };
+    for(roundCount; roundCount < 5; roundCount++) {
+        playRound()
+    };
+    if(humanScore > computerScore) {
+        console.log(`Human has won the game score is ${humanScore} vs ${computerScore}`);
     } else {
-        computerScore++;
-        console.log(`Computer has won the round, machine's choice was ${computerChoice} and your's choice was ${humanChoice}.
-        Human score: ${humanScore}
-        Computer score: ${computerScore}`);
+        console.log(`Computer has won the game score is ${humanScore} vs ${computerScore}`);
+        
     }
 };
-
-
-
