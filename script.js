@@ -16,12 +16,13 @@ const getHumanChoice = userChoice => {
         return userChoice.toLowerCase()
     };
 };
-
+// Function to play 5 round of game.
 const playGame = () => {
     let roundCount = 0;
     let humanScore = 0;
     let computerScore = 0;
 
+// Function to play single round of rock, paper and scissors game.
     const playRound = (humanChoice, computerChoice) => {
         humanChoice = getHumanChoice();
         computerChoice = getComputerChoice();
@@ -42,6 +43,7 @@ const playGame = () => {
             Computer score: ${computerScore}`);
         }
     };
+// Loop to play 5 rounds of game.
     for(roundCount; roundCount < 5; roundCount++) {
         playRound()
     };
@@ -49,6 +51,5 @@ const playGame = () => {
         console.log(`Human has won the game score is ${humanScore} vs ${computerScore}`);
     } else {
         console.log(`Computer has won the game score is ${humanScore} vs ${computerScore}`);
-        
     }
 };
