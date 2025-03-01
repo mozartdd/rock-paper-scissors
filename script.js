@@ -53,3 +53,4 @@ const playGame = () => {
         console.log(`Computer has won the game score is ${humanScore} vs ${computerScore}`);
     }
 };
+playGame();
