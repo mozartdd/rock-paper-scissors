@@ -43,7 +43,7 @@ const playGame = () => {
             Computer score: ${computerScore}`);
         }
     };
-// Loop to play 5 rounds of game.
+// Loop to play 5 rounds of game, and declare winner of game.
     for(roundCount; roundCount < 5; roundCount++) {
         playRound()
     };
