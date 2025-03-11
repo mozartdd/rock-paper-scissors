@@ -44,12 +44,12 @@ const playGame = () => {
         }
     };
 // Loop to play 5 rounds of game, and declare winner of game.
-    for(roundCount; roundCount < 5; roundCount++) {
-        playRound()
-    };
-    if(humanScore > computerScore) {
-        console.log(`Human has won the game score is ${humanScore} vs ${computerScore}`);
-    } else {
-        console.log(`Computer has won the game score is ${humanScore} vs ${computerScore}`);
-    }
+    // for(roundCount; roundCount < 5; roundCount++) {
+    //     playRound()
+    // };
+    // if(humanScore > computerScore) {
+    //     console.log(`Human has won the game score is ${humanScore} vs ${computerScore}`);
+    // } else {
+    //     console.log(`Computer has won the game score is ${humanScore} vs ${computerScore}`);
+    // }
 };
