@@ -3,7 +3,7 @@ const choice = ['rock', 'paper', 'scissors'];
 const rockBottom = document.getElementById('rock');
 const scissorsButton = document.getElementById('scissors');
 const paperButton = document.getElementById('paper');
-const allButtons = document.querySelectorAll('button');
+const result = document.getElementById('result');
 
 let roundCount = 0;
 let humanScore = 0;
@@ -28,7 +28,7 @@ const getHumanChoice = userChoice => {
 };
 
     // let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
+    // let computerChoice = getComputerChoice();
 
 const playRound = (humanChoice, computerChoice) => {
 
@@ -41,6 +41,12 @@ const playRound = (humanChoice, computerChoice) => {
         console.log(`Human has won the round, your choice was ${humanChoice} and machine's choice was ${computerChoice}.
         Human score: ${humanScore}
         Computer score: ${computerScore}`);
+    } else if (humanChoice === computerChoice) {
+        console.log(`Hey look it\'s draw, congratulations! You are as smart as your pc :), you both chose ${humanChoice}
+        Human score: ${humanScore}
+        Computer score: ${computerScore}`);
+        humanScore + 0;
+        computerScore + 0;
     } else {
         computerScore++;
         console.log(`Computer has won the round, machine's choice was ${computerChoice} and your's choice was ${humanChoice}.
@@ -50,7 +56,13 @@ const playRound = (humanChoice, computerChoice) => {
 };
 
 rockBottom.addEventListener('click', () => {
-    playRound('rock', computerChoice);
+    playRound('rock', getComputerChoice());
+});
+paperButton.addEventListener('click', () => {
+    playRound('paper', getComputerChoice());
+});
+scissorsButton.addEventListener('click', () => {
+    playRound('scissors', getComputerChoice());
 });
 
 // Function to play 5 round of game.
