@@ -27,13 +27,15 @@ const getHumanChoice = userChoice => {
     };
 };
 
-    // let humanChoice = getHumanChoice();
-    // let computerChoice = getComputerChoice();
+
+//FUNCTION TO PLAY THE GAME
 
 const playRound = (humanChoice, computerChoice) => {
-    
+
+//SETS RESULT TO EMPTY STRING AFTER EACH ROUND
     result.innerText = '';
     
+//IF ELSE PART TO FIND OUT WINNER OF THE ROUND AND LOG RESULT TO RESULT DIV
     if(
         humanChoice === 'rock' && computerChoice === 'scissors' ||
         humanChoice === 'paper' && computerChoice === 'rock' ||
@@ -64,6 +66,19 @@ const playRound = (humanChoice, computerChoice) => {
         result.classList.remove('draw');
         result.classList.remove('win');
     }
+
+
+//TWO IF STATEMENTS TO LOG THE FIRST ONE WHO REACHES 5 WINS TO THE DIV BLOCK, AFTER RESET THE SCORE
+    if(humanScore > computerScore && humanScore === 5) {
+        result.innerText = `Human has won the game score is ${humanScore} vs ${computerScore}`;
+        humanScore = 0;
+        computerScore = 0;
+    }
+    if(humanScore < computerScore && computerScore === 5) {
+        result.innerText = result.innerText = `Computer has won the game score is ${humanScore} vs ${computerScore}`;
+        humanScore = 0;
+        computerScore = 0;
+    }
 };
 
 rockBottom.addEventListener('click', () => {
@@ -75,41 +90,3 @@ paperButton.addEventListener('click', () => {
 scissorsButton.addEventListener('click', () => {
     playRound('scissors', getComputerChoice());
 });
-
-// Function to play 5 round of game.
-// const playGame = () => {
-//     let roundCount = 0;
-//     let humanScore = 0;
-//     let computerScore = 0;
-
-// // Function to play single round of rock, paper and scissors game.
-//     const playRound = (humanChoice, computerChoice) => {
-//         humanChoice = getHumanChoice();
-//         computerChoice = getComputerChoice();
-    
-//         if(
-//             humanChoice === 'rock' && computerChoice === 'scissors' ||
-//             humanChoice === 'paper' && computerChoice === 'rock' ||
-//             humanChoice === 'scissors' && computerChoice === 'paper'
-//         ) {
-//             humanScore++;
-//             console.log(`Human has won the round, your choice was ${humanChoice} and machine's choice was ${computerChoice}.
-//             Human score: ${humanScore}
-//             Computer score: ${computerScore}`);
-//         } else {
-//             computerScore++;
-//             console.log(`Computer has won the round, machine's choice was ${computerChoice} and your's choice was ${humanChoice}.
-//             Human score: ${humanScore}
-//             Computer score: ${computerScore}`);
-//         }
-//     };
-// // Loop to play 5 rounds of game, and declare winner of game.
-//     for(roundCount; roundCount < 5; roundCount++) {
-//         playRound()
-//     };
-//     if(humanScore > computerScore) {
-//         console.log(`Human has won the game score is ${humanScore} vs ${computerScore}`);
-//     } else {
-//         console.log(`Computer has won the game score is ${humanScore} vs ${computerScore}`);
-//     }
-// };
