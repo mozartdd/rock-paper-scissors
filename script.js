@@ -3,7 +3,7 @@ const choice = ['rock', 'paper', 'scissors'];
 const rockBottom = document.getElementById('rock');
 const scissorsButton = document.getElementById('scissors');
 const paperButton = document.getElementById('paper');
-const result = document.getElementById('result');
+const result = document.querySelector('.result');
 
 let roundCount = 0;
 let humanScore = 0;
@@ -31,27 +31,38 @@ const getHumanChoice = userChoice => {
     // let computerChoice = getComputerChoice();
 
 const playRound = (humanChoice, computerChoice) => {
-
+    
+    result.innerText = '';
+    
     if(
         humanChoice === 'rock' && computerChoice === 'scissors' ||
         humanChoice === 'paper' && computerChoice === 'rock' ||
         humanChoice === 'scissors' && computerChoice === 'paper'
     ) {
         humanScore++;
-        console.log(`Human has won the round, your choice was ${humanChoice} and machine's choice was ${computerChoice}.
+        result.innerText = `Human has won the round, your choice was ${humanChoice} and machine's choice was ${computerChoice}.
         Human score: ${humanScore}
-        Computer score: ${computerScore}`);
+        Computer score: ${computerScore}`;
+        result.classList.add('win');
+        result.classList.remove('draw');
+        result.classList.remove('lose'); 
     } else if (humanChoice === computerChoice) {
-        console.log(`Hey look it\'s draw, congratulations! You are as smart as your pc :), you both chose ${humanChoice}
+        result.innerText = `Hey look it\'s draw, congratulations! You are as smart as your pc :), you both chose ${humanChoice}
         Human score: ${humanScore}
-        Computer score: ${computerScore}`);
+        Computer score: ${computerScore}`;
         humanScore + 0;
         computerScore + 0;
+        result.classList.add('draw');
+        result.classList.remove('lose');
+        result.classList.remove('win');
     } else {
         computerScore++;
-        console.log(`Computer has won the round, machine's choice was ${computerChoice} and your's choice was ${humanChoice}.
+        result.innerText = `Computer has won the round, machine's choice was ${computerChoice} and your's choice was ${humanChoice}.
         Human score: ${humanScore}
-        Computer score: ${computerScore}`);
+        Computer score: ${computerScore}`;
+        result.classList.add('lose');
+        result.classList.remove('draw');
+        result.classList.remove('win');
     }
 };
 

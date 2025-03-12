@@ -1,0 +1,19 @@
+body {
+    max-width: 500px;
+    margin: auto;
+    font-size: 1.9em;
+}
+
+.win {
+    color: green;
+}
+.lose { 
+    color: red;
+}
+.draw {
+    color: blue;
+}
+
+.container {
+    max-width: 650px;
+}
