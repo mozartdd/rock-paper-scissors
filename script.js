@@ -1,35 +1,24 @@
 const choice = ['rock', 'paper', 'scissors'];
 
-const rockBottom = document.getElementById('rock');
+const rockBottom = document.getElementById('rock'); //WHO KNOWS THAT KNOWS :D
 const scissorsButton = document.getElementById('scissors');
 const paperButton = document.getElementById('paper');
 const result = document.querySelector('.result');
+const playSection = document.getElementById('play-game-section');
+const resetButton = document.getElementById('reset-button');
+const title = document.querySelector('h1');
 
-let roundCount = 0;
 let humanScore = 0;
 let computerScore = 0;
 
 
-// Function that randomly returns one element from choice array.
+// FUNCTION THAT RANDOMLY RETURN ONE OPTION FROM CHOICE ARRAY AND SETS IT AS COMPUTER CHOICE
 const getComputerChoice = () => {
     let randomInt = Math.floor(Math.random() * choice.length);
     return choice[randomInt];
 };
 
-// Function that returns users choice to lower case or if choice is invalid return functions callback.
-const getHumanChoice = userChoice => {
-    userChoice = prompt('Make your choice between rock, paper and scissors').toLowerCase().trim();
-    if(!(userChoice === 'rock' || userChoice === 'scissors' || userChoice === 'paper')) {
-        alert('Enter a valid choice');
-        return getHumanChoice()
-    } else {
-        return userChoice.toLowerCase()
-    };
-};
-
-
 //FUNCTION TO PLAY THE GAME
-
 const playRound = (humanChoice, computerChoice) => {
 
 //SETS RESULT TO EMPTY STRING AFTER EACH ROUND
@@ -52,8 +41,6 @@ const playRound = (humanChoice, computerChoice) => {
         result.innerText = `Hey look it\'s draw, congratulations! You are as smart as your pc :), you both chose ${humanChoice}
         Human score: ${humanScore}
         Computer score: ${computerScore}`;
-        humanScore + 0;
-        computerScore + 0;
         result.classList.add('draw');
         result.classList.remove('lose');
         result.classList.remove('win');
@@ -68,17 +55,29 @@ const playRound = (humanChoice, computerChoice) => {
     }
 
 
-//TWO IF STATEMENTS TO LOG THE FIRST ONE WHO REACHES 5 WINS TO THE DIV BLOCK, AFTER RESET THE SCORE
+//TWO IF STATEMENTS TO LOG THE FIRST ONE WHO REACHES 5 WINS TO THE DIV BLOCK
     if(humanScore > computerScore && humanScore === 5) {
         result.innerText = `Human has won the game score is ${humanScore} vs ${computerScore}`;
-        humanScore = 0;
-        computerScore = 0;
+        playSection.style.display = 'none';
+        resetButton.style.display = 'inline';
+        title.innerText = 'Game Over, you won!';
     }
     if(humanScore < computerScore && computerScore === 5) {
-        result.innerText = result.innerText = `Computer has won the game score is ${humanScore} vs ${computerScore}`;
-        humanScore = 0;
-        computerScore = 0;
+        result.innerText = `Computer has won the game score is ${humanScore} vs ${computerScore}`;
+        playSection.style.display = 'none';
+        resetButton.style.display = 'inline';
+        title.innerText = 'Game Over, you lost!';
     }
+};
+
+//FUNCTION TO RESET THE GAME
+const resetGame = () => {
+    playSection.style.display = 'block';
+    resetButton.style.display = 'none';
+    result.innerText = '';
+    title.innerText = 'Make your choice';
+    humanScore = 0;
+    computerScore = 0;
 };
 
 rockBottom.addEventListener('click', () => {
@@ -90,3 +89,4 @@ paperButton.addEventListener('click', () => {
 scissorsButton.addEventListener('click', () => {
     playRound('scissors', getComputerChoice());
 });
+resetButton.addEventListener('click', resetGame);
